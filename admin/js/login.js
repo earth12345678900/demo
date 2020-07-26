@@ -22,13 +22,15 @@ $(function() {
         e.preventDefault();
         //发送ajax请求
         $.ajax({
-            url: 'http://localhost:8080/api/v1/admin/user/login',
+            url: BigNew.user_login,
             type: 'post',
             data: $(this).serialize(),
             success: function(res) {
                 $('#myModal').modal('show');
                 $('#myModal .modal-body p').text(res.msg);
                 if (res.code == 200) {
+                    //讲服务器端响应回来的token存储到本地
+                    localStorage.setItem('token', res.token);
                     // location.href = './index.html';
                     //模态框隐藏后跳转页面
                     $('#myModal').on('hidden.bs.modal', function(e) {
