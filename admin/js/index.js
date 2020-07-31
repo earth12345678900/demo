@@ -49,13 +49,5 @@ $(function() {
     $('.menu .level02 li').on('click', function() {
         $(this).addClass('active').siblings().removeClass('active');
     })
-
-
-
-
-
-
-
-
 });
 // xhr.setRequestHeader('Authorization','eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiYWRtaW4iLCJleHAiOjIyMDA0NDE1MjYsImlhdCI6MTU5NTY0MTUyNn0.LF_9uUdvrJ10UxenLX3orpjfaYHbRxXHUBwjOCoRpqjOprXxJHoA023XXvt_pYC-3ZWtxA9INWCnUAe5iJRApRIKfMHKLB0taWPWgTzyJohzsnHcZekFg-rEsxpXNlGGFfoTqJqKknBpc5JNo5XqrKiLx1HMKsElKbhSy4PIyPQ')

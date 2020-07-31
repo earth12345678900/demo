@@ -10,10 +10,23 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
+    <!-- 引入日期插件 -->
+    <!-- 在 article_release.js 前面引入-->
+    <link rel="stylesheet" href="libs/jedate/css/jeDate-test.css">
+    <link rel="stylesheet" href="libs/jedate/css/jedate.css">
+    <script src="libs/jedate/js/jedate.js"></script>
+    <!-- 引入富文本编辑器 -->
+    <script src="libs/wangEditor/wangEditor.js"></script>
+    <!-- jq -->
+    <script src="./libs/jquery-1.12.4.min.js"></script>
     <!-- jq -->
     <script src="./libs/jquery-1.12.4.min.js"></script>
     <!-- 模板引擎 -->
     <script src="./libs/template-web.js"></script>
+    <script src="js/http.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/article_edit.js"></script>
+
 </head>
 
 <body>
@@ -22,7 +35,8 @@
             文章编辑
         </div>
         <div class="container-fluid common_con">
-            <form class="form-horizontal article_form" id="form">
+            <form class="form-horizontal article_form" id="myForm">
+                <input type="hidden" name="id" id="">
                 <div class="form-group">
                     <label for="inputTitle" class="col-sm-2 control-label">文章标题：</label>
                     <div class="col-sm-10">
@@ -39,7 +53,7 @@
                 <div class="form-group">
                     <label for="inputCategory" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
-                        <select class="form-control category" name="categoryId">
+                        <select class="form-control category" id="categoryId" name="categoryId">
                             <option>类别一</option>
                             <option>类别二</option>
                             <option>类别三</option>
@@ -51,22 +65,40 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">发布时间：</label>
                     <div class="col-sm-4">
+
+                        <div class="jeinpbox">
+                            <input type="text" name="date" class="jeinput" id="testico" placeholder="YYYY-MM-DD">
+                            <div class="icons jebtns" onclick="jeDate('#testico',{trigger:false, zIndex: 99999,format: 'YYYY-MM-DD'})"></div>
+                        </div>
+
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
-                    <div class="col-sm-10">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success btn-edit">修改</button>
-                        <button type="submit" class="btn btn-default btn-draft">存为草稿</button>
-                    </div>
-                </div>
-            </form>
         </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
+            <div class="col-sm-10">
+                <div id="editor">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success btn-edit">修改</button>
+                <button type="submit" class="btn btn-default btn-draft">存为草稿</button>
+            </div>
+        </div>
+        </form>
     </div>
+    </div>
+
+
+    <!-- 文章分类数据的模板 -->
+    <script type="text/html" id="categoryList">
+        {{each data value index}}
+        <option value="{{value.id}}">{{value.name}}</option>
+        {{/each}}
+
+    </script>
 </body>
 
 </html>
